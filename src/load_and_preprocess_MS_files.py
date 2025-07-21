@@ -14,16 +14,16 @@ def load_stream_data(h5_path, stream_index=0):
 
     with h5py.File(h5_path, 'r') as f:
         signal = f[f"{stream_path}/ChannelData"][:]
-        timestamps = f[f"{stream_path}/ChannelDataTimeStamps"][:]
-        channels = f[f"{stream_path}/InfoChannel"]['Label'][:]
+        #timestamps = f[f"{stream_path}/ChannelDataTimeStamps"][:]
+        #channels = f[f"{stream_path}/InfoChannel"]['Label'][:]
 
         # Decode channel names from bytes to strings
-        channels = [ch.decode('utf-8') for ch in channels]
+        #channels = [ch.decode('utf-8') for ch in channels]
 
         # Convert to DataFrame: shape is (n_samples, n_channels)
-        df = pd.DataFrame(signal.T, columns=channels)
-        df["Time"] = timestamps
+        #df = pd.DataFrame(signal.T, columns=channels)
+        #df["Time"] = timestamps
 
-        return df
+        return signal
 
 

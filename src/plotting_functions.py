@@ -1,7 +1,12 @@
 import matplotlib.pyplot as plt
 
 
-def test_plot_channels(df, channel):
+def test_plot_channels(data, channel=40):
 
-    df.plot(x="Time", y=df.columns[0])
+    subset = data[channel, :100_000]
+
+    plt.plot(subset)
+    plt.title(f"Channel {channel} - First 100,000 samples")
+    plt.xlabel("Sample")
+    plt.ylabel("Amplitude")
     plt.show()
